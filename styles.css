@@ -1,9 +1,10 @@
 body {
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(250, 244, 234);
   }
   
   h1 {
-    background-color: rgb(202, 192, 178);
+    background-color: rgb(153, 177, 146);
     padding: 1em;
   }
