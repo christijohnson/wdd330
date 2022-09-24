@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 1 Note and Exercise - WDD330</title>
+  </head>
+  <body>
+    <h1>Week 2</h1>
+    <h2>Review</h2>
+    <p>Javascript: Novice to Ninja</p>
+    <h2>Notes</h2>
+    <section>
+      <h3>Programming Basics - variables, scope, converting/parsing, template literals</h3>
+      <p>There are reserved words that are used by JavaScript language that cannot be used
+        as variable names, others that weren't reserved that should have been.
+        Primitive Data Types - string, symbol, number, boolean, undefined, null - all other
+        values are objects (like array, function, object literals).  Use operator of "typeof"
+        to determine the value.
+        <div>Variables - must be declared before they can be used. "const" is used when the variable
+        won't be assigned to another value (primitive data) and "let" is used if it might be reassigned later.</div>
+        <div>Scope - refers to where the constant or variable are accessible by the program. If the variable
+        is block scoped it is only available in the local scope.  If the variable is declared
+        outside a block it has global scope, or is accessible everywhere in the program.  This 
+        can cause issues and potentially overwrite other values.</div>
+        <div>Backslashes - used to escape special characters in strings: single quote \', double quote \",
+        end of line \n, carriage return \r, tab \t, if backslash \\.</div>
+        <div>Call a method - use dot operator followed by name of method, followed by parentheses.</div>
+        <div>Template literals - use backtick character, expressions in curly brace with $ character in front.</div>
+        <div>To check and see if a number is valid, use method Number.isInterger to check.</div>
+        <div>Operations - add, sub, mult *, div /, expon **, remaind %</div>
+        <div>Increase value - compound assignment operator of +=, decrease -=, double *=, divide /=,
+        change to remainder %=</div>
+        <div>Check a value is number - Number.isFinite()</div>
+        <div>Parsing Number - use function parseInt() to convert string back to a number, specify
+        base of the number, can use to ignore letters after number, with a decimal will remove
+        anything after the decial point, use parseFloat() convert string into floating point decimal.</div>
+        <div>Logical Operators - not !, and &&, or ||</div>
+        <div>Equality - soft equality ==, hard equality ===, or soft inequality !=, hard 
+        inequality !==</div>
+      </p>
+      <h3>Arrays, Logic, and Loops - array methods</h3>
+      <p>Arrays are an ordered list of values enclosed in square brackets, are an object. You
+        can add values to array by arrayName [0] = 'value'.  You can create the array literal
+        so you don't have to add each one, and they can be different types.  To remove item use
+        the delete operator, but it leaves an undefined value.  To remove the last item,use pop() method, to remove the first item,
+        use the shift() method.  To append a new value to the end of the array, use the push()
+        method, and append to the beginning use the unshift() method. The slice() method creates
+        a subaray, and splice() removes an item and replaces it with another.  You can find the 
+        value of an item using indexof() method.
+        <div>Maps - ordered lists of key-value pairs, like a dictionary.  Maps can use any data type
+        as a key.  You can find the number of key-value pairs using the size property, to retrieve
+        values, use the get() method.  Create a map object using new operator and Map() constructor,
+        const romanNumerals = new Map();.  To look up a value, use get() method, to remove use
+        delete() method, clear() method removes all key-value pairs.</div>
+        <div>Logic - if statement, the code inside the block will only run if the condition inside
+        the parentheses is true.  - else statement, alternate block of code to run if the condition
+        is false.  - switch statement, instead of writing a string of else if statements, use 
+        switch operator with the value to compare in parentheses, then case for each possible
+        keyword followed by the code than runs if true, finish each block with break to stop
+        evaluing the statement.  If none of cases are true, default key provides the code.</div>
+        <div>Loops - repeat a piece of code over and over per conditions.  - while loop, run
+        a block of code while conditions are true.  - for loop, condition has to be met for the 
+        loop to continue the code is what to do after each iteration, for loops can be nested.
+        </div>
+      </p>
+      <a href="examples.js">JavaScript examples</a>
+      <h3>Functions - functions and callbacks</h3>
+      <p>Function is code that can be referenced by name, like a small mini-program, help
+        reduce repetition and make code easier to follow.
+      <div>Function Declaration - starts with keyword function, followed by name, then
+        parentheses, then the block of code.</div>
+      <div>Function Expression - assigns an anonymous funcion to a variable, = function() then
+        the block of code.</div>
+        Invoking a function - to run the code inside the function body, simply enter name
+        followed by parentheses, like hello(); no repeated blocks of code and when you change
+        it, only have to update it once.  Known as DRY principle (Don't Repeat Yourself).  Functions
+        return a value, can be specified using return statement.  You set the parameters a function
+        needs when the function is defined.  When the function is invoked, it is provided arguments.
+      <div>Arrow Functions, declare function using less verbose syntax.  They are identified
+        by the arrow symbol =>, the parameters come before the arrow and main body comes 
+        after.  These functions are always anonymous, to refer to them they must be assigned
+        a variable.  const square = x => x*x;  The advantages - less verbose, single parameters
+        don't need parentheses, body doesn't go inside a block if it is only one line, keyword
+        return isn't required if it is the only statement.  Longer functions still require curly
+        braces to deliminate the body and keyword return at the end.</div>
+      <div>Function Hoisting - action of moving all variable and function declarations to
+        top of the current scope.  Functions defined using function declaration are automatically
+        hoisted, or can be invoked before they are defined.</div>
+      <div>Callbacks - a function that is passed as an argument to another function.  The callback
+        is provided as a paramenter, then invoked inside the body of the function.</div>
+        forEach method - loop through array and invoke callback function using each value
+        as an argument.  Callback function requires 3 parameters.  1st - represents value
+        in the array, 2nd - represents current index, 3rd - represents the array that the callback
+        is being called on.  - map method is similiar, used to process data returned from databases
+        in array form, adding HTML tags, difference is it returns a new array that replaces
+        each value with the return value.  - reduce method, iterates over each value but 
+        cumulatively combines each result to return a single value.  - filter method returns a
+        new array that only contains items from the original array that return true when passed
+        to the callback.
+      </p>
+      <a href="team_assgnt2.html">Team Assignment Wk2</a>
+      <h3>Questions</h3>
+      <p>I don't understand Symbol and its use, either as an uniqueID or as a shared symbol.  Is this
+        value not used much in JavaScript or do I need to add this to my skill set? I've never used it before.  What
+        is the difference between an array and a set?  They seems very similiar, with different
+        operators.  Why would you create a set and then convert to an array? Or convert a map to
+        an array?
+      </p>
+    </section>
+  </body>
+</html>
