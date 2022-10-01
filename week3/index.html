@@ -10,28 +10,118 @@
     <section>
     <h2>Read</h2>
     <h3>Object Methods: this</h3>
-    <p>Everything in JavaScript is one of six data types: strings, numbers, booleans, symbols,
+    <p>Entities are represented by objects, actions are represented by functions.  A function
+        that is a property of an object is called its method.  To access the object, a method
+        can use the keyword this.  It has no value until it is called.  Arrow functions have 
+        no this, instead they use the outer context.
+    </p>
+    </section>
+    <section>
+    <h2>Notes - Novice to Ninja</h2>
+      <h3>Objects</h3>
+      <p>Everything in JavaScript is one of six data types: strings, numbers, booleans, symbols,
         undefined, null, or objects.  An object is a set of related values and functions.  It
         is like a dictionary, you look up a property name and see a value.  They can encapsulate
         code that can be reused, can inherit properties for other objects.  Objects often used
         to keep related information/functionality together in the same place.
-    </p>
-    </section>
-    <h2>Notes - Novice to Ninja</h2>
-    <section>
-      <h3>Objects</h3>
-      <p>
+        <div>Object literal - wrapped all properties and methods in curly braces, allow
+            object to be created quickly and without needing to define a class, great way to 
+            organize code.  Properties include key-value pairs separated by commas.  If property
+            name doesn't follow rules, like a space, need to include quote marks, and must be
+            accessed using bracket notation.  Usually you name using underscore or CamelCase.  
+            Shorthand way of creating object is const ironMan = { name, realName};</div>
+        <div>Nested objects - objects can contain other objects, such as an object
+            can contain a list.  Use the dot notation or bracket notation to access.</div>
+        <div>JSON - JavaScript Object Notation, string representation of the object literal
+            notation with these differences:  property names must have double quote; allowed
+            values are "strings", numbers, true, false, null, arrays, objects; functions can't
+            be values.  Great because human and machine can read them!  Method parse() returns
+            JavaScript object.  Method stringfly() returns string of JSON data.</div>
+        <div>Math object - built in with several properties of common math operations.
+            All are immutable. Constants are named in capital letters:  Math.PI, .SQRT2, etc.
+            Also Math methods, Absolute values Math.abs(), Rounding Math.ceil() round up to next
+            integer, Math.floor() round down to next integer, Math.round() round to nearest integer,
+            Math.trunc() returns only integer part, Math.exp() raise a number to power or Math.pow()
+            method raise number of first argument to power of the second argument, Math.sprt() returns
+            square root of number, Math.cbrt() returns cube root, Math.max() returns maximum number,
+            Math.min() return minimum number, Math.random() create generate random number between 0
+            and 1, exclusive.</div>
+        <div>Date object - use const today = new Date(); to see date use today.toString() to
+            return date/time stamp.  Can be written in variety of formats.  Use getter methods
+            to return information.  Some are:  getDay(), getUTCDay(), getDate(), getMonth(), 
+            getFullYear(), getHours(), getMinutes(), getTime()</div>
+        <div>Character groups - groups of characters can be placed together in square brackets
+            and represents any one of the characters.  Sequence of characters have a dash between
+            first and last characters [A-Z].  Place a ^ at begining negates the sequence so that
+            [^A-Z] means it isn't a capital letter. Or combinations: [Jj][aeiou]v[aeiou] will be
+            words like Java or jive.  Pattern only looks for first occurance, use global g to return
+            all patterns.  Case sensitive, use ignoreCase i to be case-insensitive.  Patterns will
+            stop at the end of line, use multiline m to negate.
+        </div>
       </p>
       <h3>Document Object Model</h3>
-      <p>
+      <p>The DOM allows you to access elements on a web page and enable interaction with the page
+        by - adding and removing elements, changing the order, contant and attributes of the elements,
+        and by changing how they are styled.  Nodes of the DOM have numerical code assigned to
+        signify with type: 1 - element, 2 - attribute, 3 - text, 8 - comment, 9 - body.  Shortcut
+        methods of DOM are: Document.body - return body element, Document.images - returns list of
+        images in the doc, Document.links - returns list of 'a' and 'area' elements with a href
+        attribute, Document.anchors - returns list of 'a' elements with a name attribute,
+        Document.forms returns a list of all forms in the doc.
+        <div>Get elements - use getElementById() reference the unique id in the argument,
+        these should be unique to just one element.  Use getElementsByTagName() give list of all of
+        the items (ie 'li') and use the index notation to find each individual item.  Use
+        getElementsByClassName() to return list items assigned with the same class name.</div>
+        <div>Query selectors - use document.querySelector() use CSS notation to find the first
+        element that matches.  Using document.querySelectorAll() uses CSS notation to find them all.
+        </div>
+        <div>Attributes - the method to return the value of an attribute is gettAttribute(),
+        to change the attribute use setAttribute(attribute name, new value).  You can also add new
+        attributes.</div>
+        <div>Dynamic Markup - create new elements and add them to a page, or edit or remove
+        elements that exist.  The method createElement() takes a tag name as parameter and returns
+        that element.  In console, const flash = document.createElement('li'); to add content
+        create a text node which the parameter is a string containing the text.  Like 
+        const flashText = document.createTextNode('Flash');  Next you append the two using the
+        appendChild() method, flash.appendChild(flashText); - this is better writen as
+        const flash = document.createElement('li'); flash.textContent = 'Flash'; - easier to
+        create a function if repeated.  The function will perform the two steps.
+        function createElement (tag, text) { const el = document.createElement(tag);  el.textContent
+        = text;  return el }, then new elements can be created using const aquaman = 
+        createElement('li', 'Aquaman');  - innerHTML returns all the child elements as a string.
+        It is also writable and can place HTML inside an element.  It saves time and can be as simple
+        as h1.innerHTML = 'Suicide Squad'; and can be used to insert a large amount of HTML as
+        a string instead of repeating for each element.
+        </div>
       </p>
       <h3>Events</h3>
-      <p>
+      <p>Events provide the link between the web page and user interactions. Like when they
+        click on a link, press a key, or move a mouse - an event occurs, then the program can
+        detect it and respond to it.
+        <div>Event Listeners - set a notification to alert you to when something happens, then
+        program what to do when it happens. Method addEventListener() will attach an event listener
+        to the document's body.  The first parameter is the type of event, the second is the
+        callback function to invoke. addEventListener('click', () => alert('You Clicked!')); or
+        use named function - function doSomething() { alert('You Clicked!'); } addEventLister('click',
+        doSomthing);
+        </div>
+        <div>Event Object - when an event handler is triggered by an event, the callback function
+        is called, it is automatically passed an event as a parameter. Types can be - click, mousedown,
+        mouseup, dblclick, mouseover, mouseout.  There are keyboard events - keydown, keypress,
+        keyup.  Other devices use touch events - touchstart, touchend, touchmove, touchenter,
+        touchleave, touchcancel.
+        </div>
       </p>
-      <a href="examples.js">JavaScript examples</a>
-      <a href="team_assgnt2.html">Team Assignment Wk2</a>
+      <a href="examples.js">JavaScript examples</a><br>
+      <a href="examples.html">HTML examples of dynamic markup</a><br>
+      <a href="team_assgnt3.js">Team Assignment Wk2</a>
       <h3>Questions</h3>
-      <p>
+      <p>I read how you use the keyword "this" to call or invoke an object, but I haven't ever used
+        this keyword in any other classes.  Is this a commonly used method?  I didn't understand 
+        the section on special characters and modifiers.  When is this used?  Is it only for searching 
+        for characters in objects?  Or are these used to validate characters inputted through forms, or both?
+        How do you program event listeners and their types for web pages that can and will be used
+        for mobile devices (touch events) and computers (click events and keyboard events)?
       </p>
     </section>
   </body>
