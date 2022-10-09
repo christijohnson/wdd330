@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 4 Notes and Exercises - WDD330</title>
+  </head>
+  <body>
+    <h1>Week 4</h1>
+    <section>
+    <h2>Notes - Novice to Ninja</h2>
+      <h3>Forms</h3>
+      <p>Forms are made up of the form element, input fields, menus, and buttons.  Usually
+        the information is processed on the back end using PHP or Ruby, but is becoming more
+        common to process the form on the front end using JavaScript.  Each form control has a
+        value that can be specified in the HTML code, the value can be changed by the user entering
+        information or interacting with the form's interface.  The value can also be changed
+        dynamically using JavaScript.  The method form.submit() will submit the form automatically,
+        or the form can be submitted manually by the user employing the button or input element, or
+        an element with a type attribute of image.  The method form.reset() will reset all the
+        form control back to their initial values.  A button with a type attribute of reset can
+        also be used without additional scripting - button type='reset'>Reset close button.  Can set
+        a focus event on an element so that the cursor is placed inside the element.
+        <div>Form Controls - input fields: text, passwords, check boxes, radio buttons, file
+        uploads - text is for a short piece of text like a username. Using the input type of
+        password and the characters are concealed to be unreadable on the screen. - select 
+        menus: drop-down lists of options - textarea: element for longer text entry - button: elements 
+        for submitting and resetting forms.  Input fields with type='hidden' will not be displayed
+        by browser, but can be seen in code.  To upload files use with input field type='file'.
+        Other types are: number, tel, color.
+        </div>
+        <div>Form Validation - checks to see if the user entered the information into the form correctly.
+        Examples: required field is completed, email address is valid, number is entered when
+        numerical data is required, password has at least the minimum numbers of characters.  You may
+        have to validate many different elements to various rules, makes sense to write more
+        generic addError() amd removeError() functions.  You can disable the submit button if there
+        are errors on the form.
+        </div>
+      </p>
+      <h3>Object Oriented Programming</h3>
+      <p>Three concepts in OOP: encapsulation, polymorphism, and inheritance.  Encapsulation
+        has inner workings kept hidden.  It keeps all programming logic inside and object (like
+        the juicer).  Polymorphism is same process can be used for different objects, various
+        objects can share the same method (like other appliances in kitchen have on button).
+        Inheritance is taking the features of one object and then add some new features, take an
+        object that exists and inherit all its properties and methods and then improve the
+        functionality (like getting a new juicer).
+        <div>Constructor function - defines the properties and methods of an object.  Keyword this
+        is used to represent the object.  To make a property private, use an underscore before
+        the propery name (like _color).  These properties can't be accessed outside of their scope.
+        </div>
+        <div>Getters and Setters - object properties can have a get() or a set() method instead
+        of a value attribute, but they can only have one or the other, not both.  These are useful
+        if a property relies on the value of another property (like retirement age).
+        </div>
+        <div>Mixins - way to add properties and methods from one object to another without using
+        inheritance.  Can have more complex objects by mixing basic object together.  Use the
+        Object.assign() method.  To avoid a shallow copy, use the mixin() function to assign
+        all properties of one object to another.  Allows the adding of a large number of properties
+        all at once, instead of one at a time.  Can also use copy() method to make an exact, deep
+        copy.  It takes a parameter of target of the object to be copied.  Way to think about
+        the difference of prototypal inheritance and inheritance from mixin objects is to conside
+        whether an object is something or it has something.  (Is - tank or soldier, has - gun)
+        </div>
+        <div>Chaining Functions and Binding this - if a method returns this, the methods can be
+        chained together to form a sequence - like superman.fly().move().xray(); makes it harder
+        to debug.  When this is a nested function, the value of this loses its scope.  The solution
+        is to set the variable that = this before the nested function and using the arrow function.
+        </div>
+      </p>
+      <h3>Modular Javascript - Modern Javascript</h3>
+      <p>Module is a self-contained piece of code that provides functions and methods that can be
+        used in other files and by other modules.  It keeps the code organized in separate, reusable
+        files which improves mantainability.  A module's code should have a single purpose, then
+        group functions with distinct functionality.  Can select which values or functions to import.
+        When lots of values and functions need to be imported, use the wild card symbol * with a 
+        namespace.
+      </p>
+      <a href="form.html">Form examples</a><br>
+      <a href="form.js">JavaScript examples for forms</a><br>
+      <a href="module.js">JavaScript examples of modules</a><br>
+      <a href="tic-tac-toe/">Team Assignment Wk4</a>
+      <h3>Questions</h3>
+      <p>On forms, I know that the input has to have a name field, why do we have multiple
+        parts of the input field that just repeat the same name?  For example - input type=
+        'password' name='realName' id='realName'.  Is there other ways to create these parts of
+        the form without repeating 'realName'?  How often are new syntax established?  Does older
+        syntax still work or will the programming have to be updated?  Are encapsulation, polymorphism, 
+        inheritance, and prototypes only used when you program using classes?  There were many
+        methods and functions with little nuisances in this reading that I'm not sure that I will
+        remember if I don't use them all the time.  How do I remember all of this or am I forced
+        to look it up every time?
+      </p>
+    </section>
+  </body>
+</html>
