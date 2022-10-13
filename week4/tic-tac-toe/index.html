@@ -10,23 +10,30 @@
         <h1>Tic-Tac-Toe</h1>
         <table class="playfield">
             <tr>
-                <td id="a1" onclick="nextplayer(event)"></td>
-                <td id="b1" onclick="nextplayer(event)"></td>
-                <td id="c1" onclick="nextplayer(event)"></td>
+                <td id="a1" onclick="nextplayer(event,'a1')"></td>
+                <td id="b1" onclick="nextplayer(event,'b1')"></td>
+                <td id="c1" onclick="nextplayer(event,'c1')"></td>
             </tr>
             <tr>
-                <td id="a2" onclick="nextplayer(event)"></td>
-                <td id="b2" onclick="nextplayer(event)"></td>
-                <td id="c2" onclick="nextplayer(event)"></td>
+                <td id="a2" onclick="nextplayer(event,'a2')"></td>
+                <td id="b2" onclick="nextplayer(event,'b2')"></td>
+                <td id="c2" onclick="nextplayer(event,'c2')"></td>
             </tr>
             <tr>
-                <td id="a3" onclick="nextplayer(event)"></td>
-                <td id="b3" onclick="nextplayer(event)"></td>
-                <td id="c3" onclick="nextplayer(event)"></td>
+                <td id="a3" onclick="nextplayer(event,'a3')"></td>
+                <td id="b3" onclick="nextplayer(event,'b3')"></td>
+                <td id="c3" onclick="nextplayer(event,'c3')"></td>
             </tr>
         </table>
         <div class="gameOver">
             <button id="reset">Reset</button>
+            <div id="status">
+                <div id="xturn">X's turn</div>
+                <div id="oturn" class="hidden">O's turn</div>
+                <div id="xwin" class="hidden">X wins</div>
+                <div id="owin" class="hidden">O wins</div>
+                <div id="tiegame" class="hidden">Tie game</div>
+            </div>
         </div>
         <script src="script.js"></script>
     </body>
