@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 5 Notes and Exercises - WDD330</title>
+  </head>
+  <body>
+    <h1>Week 5</h1>
+    <section>
+    <h2>Notes - Novice to Ninja</h2>
+      <h3>Testing and Debugging</h3>
+      <p>Types of errors - System Error - with system or external devices with which the program
+        is interacting.  Programmer Error - incorrect syntax or faulty logic, or even a typo.  User
+        Error - user entered data incorrectly, program can't handle it.  An exception is an error
+        that produces a return value that can then be used by the program to deal with the error, such
+        as trying to call a method that is nonexistent.  Exceptions produce a stack trace, this is 
+        a sequence of functions or methods that lead to a point where the error occured.  Stack 
+        trace will work backwards from the point of error to identify the original function or 
+        method that started the sequence.  Warnings occur is there's an error in the code, but
+        doesn't cause the program to crash.  It can continue to run, but could be problematic.
+        Problems could lurk in the background until they cause the program to crash spectacularly,
+        silent errors are difficult to spot and track down.  Programmers should ensure the code
+        will fail loudly in development so errors can be identified and fixed.  Then make the code
+        fail gracefully in production.  This is accomplished by catching exceptions and testing
+        the code rigorously.  Strict mode produces more exceptions and warnings to prevent some of
+        the deprecated features.  Writing code in strict mode can help improve clarity and speed
+        and encourages a better quality of JavaScript to be written.  You simply use the line of - 
+        'use strict'; to be the first line of the JavaScript file.  If the engine doesn't support
+        this mode, this line will be ignored.  Or you can just apply this mode to a function when
+        it is the first line of the then block.
+        <div>Debugging in Browser - basic form is the alert() method, this stops a program from 
+        running until OK is clicked.  It is an effective way of putting breakpoints in the code
+        that let us check the value of the variables at that point to see if they're what we expect
+        them to be.  Other way is the console object which has a number of methods for logging information
+        and debugging.  You use the console.log() method at different stages of the programming 
+        and console.trace() will log an interactive stack trace in the console.
+        </div>
+        <div>Error Objects - error objects can be created by the host environment when an exception 
+        occurs, or created in the code using a constructor function - const error = new Error('Oops,
+        something went wrong');  Other object errors are: RangeError - when number is outside the 
+        allowable range of values, ReferenceError - when a reference is made to an item that doesn't 
+        exist, SyntaxError - error in syntax, TypeError - error in type of value used like a string 
+        when a number is expected, URIError - problem encoding or decoding URI, InternalError - the 
+        non-standard error in the JavaScript engine.  Custom error objects can be constructed like,
+        const error = new TypeError('You need to use numbers in this function');
+        </div>
+        <div>Exception Handling - how you catch errors while they are hidden from the user, and keep
+        the program running.  You use the try, catch, and finally block.  If there is an error in 
+        the try block, the code in the catch block will run.  Can add a finally block that will
+        be executed after the try or catch block, whether an exception occured or not.
+        </div>
+        <div>Test-driven Development (TDD) - process of writting tests before any code.  Then write
+        code that will pass the tests.  You can refactor the code to make it faster, more readable,
+        and remove repetition.  The steps - 1. Write test that initially fail  2. Write code to
+        pass the tests  3. Refractor the code  4. Test refactored code  5. Write more tests for 
+        new features.  Jest is a TDD framework, created by Facebook.  First it needs to be installed
+        by entering npm install -g jest in the command in a terminal and tested by running
+        jest -v.  If a version number is returned, it has been installed correctly. 
+        </div>
+      </p>
+      
+      <a href="error-examples.js">JavaScript examples of try blocks</a><br>
+      <a href="team-activity-5/index.html">Team Assignment Wk5</a>
+      <h3>Questions</h3>
+      <p>Do you use the 'use strict' mode for writing code? Is it better used by an experienced
+        programmer than a novice?  I have written tests before, to test my coding.  I can't wrap 
+        my mind around how to write tests before the code (using TDD).  Have you ever coded like 
+        this before?  Wouldn't you have to have some basic code established to know what tests to 
+        write?
+      </p>
+    </section>
+  </body>
+</html>
