@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>To Do List</title>
+</head>
+<body>
+  <h1>To-Do List</h1>
+  <div class="container" id="filters">
+    <button class="filterButton" id="showCompleted">Show Completed</button>
+    <button class="filterButton, filter" id="showAll">Show All</button>
+    <button class="filterButton" id="showIncomplete">Show Incompleted</button>
+</div>
+<div class="container">
+  
+  <form  action="#">
+    <input type="text" name="item" id="item" placeholder="Add New">
+</form>  
+<ul id="list"></ul>
+</div>
+<footer>
+  <p><Span id="incomplete"></Span></p>
+  <div class="button">
+    <button onclick="window.local.clearStorage()">Clear List</button>
+  </div>
+</footer>
+<script type="module" src="./todo.js"></script>
+</body>
+</html>

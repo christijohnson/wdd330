@@ -1,0 +1,118 @@
+body {
+  background: #bcb2c9;
+  margin: 0 25% 0 25%;
+  color: #252722;
+  font-family: cursive;
+}
+
+button {
+  background-color: #e9e5d6;
+  color: #041a30;
+  font-family: cursive;
+  margin-top: 5px;
+  padding: 10px 20px;
+
+}
+
+.container {
+  background: #3385d6;
+  max-width: 450px;
+  width: 100%;
+  display: table;
+  margin: 0 auto;
+  margin-top: 40px;
+  border: 3px solid #2a175f;
+  font-size: 1.5em;
+}
+
+input {
+  border: none;
+  display: block;
+  width: 98%;
+  line-height: 1.5;
+  padding: 8px 0 8px 10px;
+  border-bottom: 1px solid #2a175f;
+  outline: 0;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 0px;
+  line-height: 1;
+  font-size: 4em;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  color: #e9e5d6;
+  font-weight: 400;
+  border-bottom: 2px solid #2a175f;
+  line-height: 1.5;
+  padding: 8px 0;
+}
+
+ul li:before {
+  content: "\25A1";
+  padding: 10px 10px;
+  font-size: 20px;
+}
+
+ul li:hover {
+  text-decoration: line-through;
+  cursor: pointer;
+}
+
+ul li:last-child {
+  border-bottom: none;
+}
+
+.button {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.checked {
+  color: #6aa86a;
+  text-decoration: line-through;
+}
+
+.checked:before {
+  content: "\2713";
+  padding: 10px 10px;
+  font-size: 20px;
+}
+
+.checked:hover {
+  text-decoration: none;
+}
+
+.checked:hover:after {
+  content: "(double click to remove)";
+  margin-left: 25%;
+  font-size: .75em;
+  color: red;
+}
+
+#filters {
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.filter {
+  background-color: orange;
+}
+
+p {
+  text-align: center;
+}
