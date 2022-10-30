@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 7 Notes and Exercises - WDD330</title>
+  </head>
+  <body>
+    <h1>Week 7</h1>
+    <section>
+    <h2>Notes - Novice to Ninja</h2>
+      <h3>Futher Functions</h3>
+      <p>In JavaScript, functions are first-class objects.  This means they can be passed in code
+        the same way as every other value.  They can have their own properties and methods,
+        accept other functions as parameters, be returned to other functions.  They are a flexible
+        tool that can be used to make the code cleaner.  Functions have a length property that 
+        returns the number of parameters the function has.  Method call() can be used to set the 
+        value of this inside a function.  If a function requires parameters, they need to be provided
+        as arguments after the first argument, which is always the value of 'this'. (See example)
+        If function doesn't refer to an object as 'this' in the body, you can still use the call()
+        method, but you need to provide null as the first argument, like - square.call(null,4).
+        The method apply() works the same, except the arguments are provided as an array, even
+        if there is only one argument, like - square.apply(null, [4]).  
+        <div>Immediately Invoked Function Expression (IIFE, pronounced iffy) is an anonymous function
+            that is invoked as soon as it's defined.  This is done by placing parentheses at the end
+            of the function.  It is useful to perform a task while keeping variables wrapped up
+            within the scope of the function.  Temporary Variable - you can't remove a variable from a 
+            scope once it is declared.  Temporary variables can cause confusion, placing any 
+            code that uses a temporary variable inside of a IIFE will ensure that it is only
+            avaiable while the IIFE is invoked.  IIFE can also be used to set up any initalization
+            code.  Because it is only run once, no need to create reusable, named functions. (See
+            examples).</div>
+        <div>JavaScript's dynamic nature allows functions to not only call itself, but 
+            also define itself and redefine itself.  This is done by assigning an anonymous
+            function to a variable with the same name. (See examples).</div>
+        <div>JavaScript is a single-threaded environment, meaning only one piece of code will 
+            ever be processed at a time.  Callbacks can be used to facilitate event-driven asynchronous
+            programming, or when code is run out of over.  Some events are DOM events, like click or
+            keypress, but can also be the completion of a file download, data returned from a database,
+            or the result of a complex operation.  Anything that will hold up the execution of other 
+            parts of the program.  A promise is a future result of an asynchrouous operation.  When 
+            the promise is created, it is pending.  Once it is complete it is settled.  Settled promises
+            can either be resolved (completed successfully) or rejected (operation didn't work as expected).
+            Both will return relevant data. (See examples).  Method then() is used to deal with the outcome.
+            This method accepts two arguments.  First a fulfillment function, called when the promise
+            is resolved.  Second is a rejection function that is called if the promise is rejected.  A 
+            catch() method could also be used to specify what needs to happen is if the operation
+            fails.  Use promises to prevent messy callbacks. (See examples).  Add the 'await' operator
+            before an asynchronous function, it will wrap the value of the function in a promise that
+            can be assigned to a variable.</div>
+        <div>Closures - references to a variable that was created inside the scope of another
+            function, but kept 'alive' and used in another part of the program.  A closure is formed
+            when the inner function is returned by the outer function, which maintains access to
+            any variables declared inside the enclosed function. (See examples).  Closures not only 
+            have access to variables declared in the parent function scope, but they can also change
+            the value of the variables.</div>
+        <div>Function programming - generators are special functions to produce iterators.  To
+            define a generator function, use an asterisk symbol after the function declaration.
+            (function* exampleGenerator()). This function doesn't run any code in the function, it
+            returns a generator object that implements a next() method that returns a value each
+            time the method is called.  Generator functions employ keyword 'yield' that remembers the 
+            state of the value the next time it is called.  The loop is paused after every yield 
+            statement until the next method is called again.  Functional programming uses pure 
+            functions, these adhere to the following rules:
+            <section>1. Return value should only depend on values provided as arguments.  It doesn't 
+                rely on values from somewhere else in the program.  2. No side-effects.  It doesn't change
+                any values or data elsewhere.  3. Referential transparency.  Given the same arguments, a 
+                pure function will return the same result.</section>
+            Pure functions must have - at least one argument and a return value.  Pure functions 
+            help make functional programming more concise and predictable.  Referential transparency 
+            makes pure functions easy to test.  And return values can be cached.  Higher-order functions 
+            are ones that accept another function as an argument, or return another function, or both.
+            Currying is a process that involves only partial application of functions.  This element
+            is hard to wrap my mind around.</div>
+      </p>
+      <h3>AJAX</h3>
+      <p>JavaScript was orignally designed as a client-side scripting language, so it ran locally
+        in the browser, adding dynamic features to the web page.  Ajax allows JavaScript to request
+        resources from a server on behalf of the client.  These resources are usually JSON data 
+        or small fragments of text or HTML, instead of a whole web page.  A server is required when 
+        requesting resources using Ajax.  Typically this involves a server-side language like PHP, Ruby,
+        Node.js, or .NET to serve the data from a back-end database.  Acronym stands for 'Asynchronous
+        JavaScript and XML'.
+        <div> Fetch API - provides a global fetch() method with only one mandatory argument, which 
+            URL resource you wish to fetch.  This introduced the Response interface that deals with the 
+            object that's returned when the promise is fulfilled.  The method redirect() is used to redirect
+            to another URL.  The method text() takes a stream of text from the response, reads it and 
+            returns a promise that resolves to a USVSting object that can be treated as a string in 
+            JavaScript.  The blob() method is used to read a file of raw data, like an image or 
+            spreadsheet.  The method json() is used to deal with transforming a stream of JSON data 
+            into a promise that resolves to a JavaScript object.  Headers interface can pass on the 
+            file-type of resource, cookie info, authentication info, and when resource was last modified.
+            To check if the header object contains the header provided, use has().  To return the value 
+            of the header, get().  To set the value of an existing header or create a new header, use 
+            set().  To add a new header, use append() and to remove delete(). </div>
+        <div>FormData interface is included in the Fetch API and makes it easier to submit 
+            information in forms using Ajax.  An instance is created using a constructor function, like
+            const data = new FormData().  If a form is passed to this constructor as an argument, the 
+            data will be serialized automatically.  The FormData interface helps reduce the amount
+            of code needed when submitting forms.  You can also add data to the form data instance as 
+            key-value pairs using append() method.</div>
+        <div>Fetch API is still subject to change as developers, browser vendors and end-users provide 
+            feedback.  It is experimental technology, syntax can change, new features could be added, or 
+            properties and methods could change.  Can use a library that will take care of the implementation
+            details and use the most up-to-date methods.  The jQuery library is an example of a good one 
+            to use.  It has a generic ajax() method.
+        </div>
+      </p>
+      <a href="function_examples.js">JavaScript examples of functions</a><br>
+      <a href="hikes5/hiking-complete.html">Team Assignment Wk7</a>
+      <h3>Questions</h3>
+      <p>I don't understand when / where init-time branching is used.  Should all programming
+        include a "back-up" function when the browser doesn't support the code?  What is the 
+        difference between checking to see if an object is truthy or having the code fail?  I
+        didn't see value in generators.  Are they only used to iterate in a function?  If you aren't 
+        using a function declaration, how can you use a generator?  I don't understand currying.  Why
+        wouldn't you just hardcode the constant to your function?
+      </p>
+    </section>
+  </body>
+</html>
