@@ -1,0 +1,36 @@
+* {
+	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
+}
+
+h1 {
+	background-color: black;
+	color: yellow;
+	padding: 5px;
+	border-radius: 15px;
+}
+
+h3 {
+	text-decoration: underline;
+}
+
+ul {
+	padding: 0;
+	width: 150px;
+	margin: 0 auto 0 auto;
+}
+ul li {
+	list-style: none;
+	color: rgb(1, 17, 63);
+	text-align: left;
+}
+
+div.flex {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 2em;
+}
+
+button {
+	padding: 15px;
+}

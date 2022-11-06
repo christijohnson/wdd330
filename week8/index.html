@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 8 Notes and Exercises - WDD330</title>
+  </head>
+  <body>
+    <h1>Week 8</h1>
+    <section>
+    <h2>Notes - HTML5 and CSS3 for the Real World</h2>
+      <h3>Transforms and Transistions</h3>
+      <p>Transforms - this property lets you translate, rotate, scale, and/or skew any element on
+        the webpage.  The value of the transform property is that more than one transform function 
+        (separated by spaces) will be applied in the order they're provided.  
+        <div>Translation - this function allows you to move elements left, right, up, or down.  It's 
+            behavior is like position: relative and declaring top and left.  Using the translation 
+            function moves elements without impacting the flow of the document.  The function 
+            translate(x,y) moves and element x from the left and y from the top. (transform: translate(45px,
+             -45px)).  Transforms don't work on inline elements, just add display: inline-block to your 
+             style.</div>
+        <div>Scaling - the function scale(x,y) scales the element for the fators horizontally then 
+            vertically.  If only value is provided, it will be used for both the x and y, to grow or 
+            shrink your element or pseudo-element while maintaining the original aspect ratio. (To keep
+            same size - scale(1), double - scale(2), to half - scale(0.5)).  You can also use the functions 
+            scaleX(x) or scaleY(y) which will only scale the horizontal or vertical dimensions.  The 
+            scaled element will shrink or grow toward their center, the element center will stay in the 
+            same place.</div>
+        <div>Rotation and Skew- this function rotates an element around the point of origin by a specific 
+            angle value. (transform: rotate(10deg)).  The function skew(x,y) specifics a skew along 
+            the x and y axes.  If the second parameter is omitted, the skew will only occur on the x axis.
+            (transform: skew(15deg, 4deg)).</div>
+        <div>Change Origin of Transform - can control the origin from which your transforms are 
+            applied using the property transform-origin.  It is the same syntax as the background-positon 
+            property and defaults to the center of the object.  A circle or ellipse rotating 180 degrees
+            would look the same.  Use transform-origin of 10% 10% or top center, you would notice the 
+            rotation. (Default is 50% 50%).  ** choose ordering carefully - the order of the functions
+            matters.  If you rotate before translating, your translate direction will be on the rotated
+            axis **</div>
+        <div>Transitions - allow the values of CSS properties to change over time, providing
+            simple animations.  You can have a link color change on hover and have it gradually fade
+            from one color to other, instead of a sudden change.  When we animate any of the transformations,
+            our pages feel more dynamic.  CSS transitions are declared along with the regular styles on
+            an element.  When the target properties change, the browser will apply the transition making
+            the change gradual.  Steps are - 1. Declare the original state of the element in the default 
+            style declaration 2. Declare the final state of your transitioned element (ex. :hover) 3.
+            Include the transition functions in your default style using the transition properties (ex.
+            transition-property, transition-duration, transition-timing-function, transition-delay).
+            Any property changing from one value to another for which you can find a valid midpoint can 
+            be transitioned. (1px border to 15px bord is 8px, changing from a solid to dashed border-style
+            has no midpoint and can't be transitioned.)  The transition-property has no effect until
+            you set the transition-duration property.  That sets how long the transition will take, 
+            specify in seconds (s) or miliseconds (ms).  The transition-timing-function property lets 
+            you control the pace of the transition using key terms: ease, linear, ease-in, ease-out, or
+            ease-in-out.  The property transition-delay prevents the transition from beginning immediately.
+            The shorthand for 4 lines of is - transition: transform 0.2s ease-out 50ms; - the properties
+            can be in any order, except - when you have a delay you must include a duration before the delay.</div>
+        <div>Animations - CSS animation allow you control over each step of an animation through 
+            keyframes.  You first create a named animation, then attach ot to an element in that element's 
+            property declaration block.  Use the rule @keyframes before your animation name.  Each keyframe 
+            looks like its own nested CSS declaration block.  Keyterms from and to specify how far 
+            along the animation each keyframe is located.  Include the properties you want to animate 
+            along with the values.  Keyframes can be specified in any order, the percentage values determine 
+            the sequence of the keyframes.  The animation-delay property defines how many miliseconds or 
+            seconds to wait before the browser can begin the animation.  The animation-fill-mode property 
+            defines what happens before the first animation and after the last animation.  The available 
+            values are: none, forwards, backwards, or both.  The shorthand property for animations is 
+            a list separated by a space between each value.  Do NOT name your animation-name with: forwards,
+            running, or alternate.</div>
+      </p>
+      <h3>Canvas, SVG, and Drag and Drop</h3>
+      <p>With Canvas API, you can draw with JavaScript.  You can draw shapes and lines, arcs and text, 
+        gradients and patterns.  You can manipulate pixels in images and video.  The first step is to add 
+        a canvas element to the page, give it an id to grab the element from the DOM.  And it needs both 
+        a width and height attribute. (canvas id='myCanvas' class='myCanvas' width='200' height='200').
+        The context is the place where your drawing is rendered.  Obtain your drawing by calling the 
+        getContext method and pass it the string '2d'.  Use strokeStyle or fillStyle properties take either:
+        string representing a color, CanvasGradient object, or CanvasPattern object.  Use a coordinate
+        system to draw.  The top-left corner is (0,0), if the canvas is 200 px by 200 pixels, the
+        bottom-right corner is (200,200).  You can create a CanvasPatttern by calling the createPattern
+        method, which takes two parameters - the image to create the pattern with and how that image 
+        should be repeated.  Gradients can also be added using createLinearGradient() or createRadialGradient()
+        and add colors.  Then use addColorStop() to finish.  You can draw other shapes too and add images.
+        Images can then be manipulated.  You can add color to images or turn them to black and white.  Video
+        can also be manipulated.
+        <div>SVG - Scalable Vector Graphics is a file format that preserves the quality when you 
+            blow up their size or shrink them.  You can draw shapes in SVG, but it is a lot of code
+            or use an open source tool to make SVG images.</div>
+        <div>Canvas vs VSG - Canvas operates in immediate mode, it no longer has access to the shape 
+            so you can't modify it.  There's no access on the canvas through the DOM, which makes it 
+            faster.  SVG is retained mode, the image is preserved, but you can't manipulate the pixels
+            like you can in canvas.</div>
+        <div>Drag and Drop API - draggable is not a Boolean attribute, so you have to set it to true.  Use 
+            DataTransfer to pass data from your dragged items to the drop target.</div>
+      </p>
+      <a href="keyframe-examples.css">Keyframe examples for reference</a><br>
+      <a href="canvas-example.jss">Examples of using Canvas</a><br>
+      <a href="team-activity-w8">Team Assignment Wk8</a>
+      <h3>Questions</h3>
+      <p>I don't have direct questions on transforms, transitions and animations.  It was a lot of
+        information that made sense, the trick will be to use it often enough to remember it all and 
+        how each piece of it affects the page.  In the section Canvas, adding the canvas element, it 
+        shows var canvas = document.getElementById... Why use var?  Is this older information that still
+        is using var?  Should it be const instead of var? Does it matter? 
+      </p>
+    </section>
+  </body>
+</html>
