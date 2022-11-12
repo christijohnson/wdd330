@@ -37,6 +37,7 @@ const getData = () => {
     .then((response) => response.json())
     .then((data) => {
 		for (character of data.results) {
+			console.log(character.name)
 			const h3 = document.createElement("h3");
 			h3.textContent = character.name;
 			h3.onclick = () => {

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 9 Notes and Exercises - WDD330</title>
+  </head>
+  <body>
+    <h1>Week 9</h1>
+    <section>
+    <h2>Notes - Javascript: Novice to Ninja</h2>
+      <h3>The Window Object</h3>
+      <p>Every JavaScript environment has a global object.  In a browser environment the global 
+        object is the window object, which represents the browser window that contains a web page.
+        The Browser Object Model, or BOM, is a collection of properties and methods that contain 
+        information about the browser and computer screen.  You can find out which browser is being
+        used to view it, the dimensions of the screen, and which pages have been visited before.  You
+        can also create annoying pop-up windows.
+        <div>Dialogs - 3 functions supported as methods in the window object are: alert(), confirm(),
+          and prompt().  Window.alert() will pause the execution of the program and display a message
+          in the dialog box.  Window.confirm() will stop the execution of the program and display a 
+          confirmation dialog with a message as an argument, boolean value true if OK and false if 
+          it is Cancel.  Window.prompt() will stop the execution of the program and displays a message 
+          provided as an argument and a field that allows the user to enter text.</div>
+        <div>Browser Information - the window object has a navigator property that returns a 
+          reference to the navigator object which contains information about the browser being used.  
+          Its userAgent property will return information about the browser and operating system being 
+          used.  This information isn't reliable.  The window.location property is an object that 
+          contains information about the URL of the current page.  The href property returns the 
+          full URL as a string.  The protocol property returns a string describing the protocol 
+          being used (http:, https:, pop2, ftp).  The host property returns a single string describing
+          the domain of current URL and port number.  The hostname property returns a string describing 
+          the domain of the current URL.  The port property returns a string describing the port number.
+          The pathname property returns a string of the path that follows the domain.  The search 
+          property returns a string that starts with a "?" followed by the query string parameters.
+          The has property returns a string that starts with a "#" followed by the fragment identifier.
+          The origin property returns a string that shows the protocol adn domain where the current page 
+          originated from.  The window.location() object has these methods: reload() to force a reload of
+          the current page, assign() used to load another resource from a URL, replace() loads another
+          source from a URL but doesn't store in the session history, toString() returns a toString
+          containg the whole URL.  The Browser History - window.history used to access information 
+          about previously visited pages, window.history.length shows how many pages have ben visited 
+          before arrriving at current page, window.history.go() used to go to a specific page where
+          0 is the current page.  You can also navigate forward or backward a page using window.history.forward()
+          or window.history.back().</div>
+        <div>Controlling Windows - a new window can be opened using window.open() method, the 
+          URL of the page to be opened is the first parameter, the window title the second, a list
+          of attributes as the third.</div>
+        <div>The Document Object - the method write() simply writes a string of text to the page.  The 
+          document.write() method can also be used in the document inside script tags to interject a 
+          string into the markup.  This shouldn't be used as it mixing JavaScript with HTML.  Cookies 
+          are small files saved locally on a computer used to keep track of user choices.  To create 
+          a cookie, you assign it using the document.cookie property like document.cookie = 'hero=true'. 
+          The value can be changed by reassigning the same name, but different value.  You can split the 
+          string into an array containing each name/value pair using the split method and a for of loop
+          to iterate through the array.  Cookies are deleted once a browser session is finished by default.
+          Adding '; expires=date' to the end of the cookie when it's set makes it persistent.  The date is in 
+          the UTC String format of Day, DD-Mon-YYYY HH:MM:SS GMT.  For security reasons, the 
+          cookies can only be read by pages inside the same directory and domain that the file 
+          was set.  Adding the string ; secure to the end of the cooke will ensure it's only transmitted
+          over a secure HTTP network.  To remove a cooke, set it to expire at a time in the past.
+          If the cookie is a session cookie, it will expire when the tab or window is closed.</div>
+        <div>Timing Functions / Set Interval - the window.setTimeout() method accepts a callback to a function as 
+          its first parameter and a number of milliseconds as its second parameter.  Cancelling the 
+          timeout, use window.clearTimeout() method.  The window.setInterval() method is like the timeout 
+          method except it will repeatedly invoke the callback function after every given number of 
+          milliseconds.  Be careful using the this keyword with timing methods!</div>
+        <div>Animation - you can animate elements on a web page by using the setTimeout() and 
+          setInterval() methods.
+        </div>
+      </p>
+      <h3>HTML5 APIs </h3>
+      <p>Web Storage - the Web Storage API is a key-value storage on the client's 
+        computer like cookies, but with fewer restrictions, more storage capacity, and easier to use.
+        Here you can store information about users and application-specific information that can be
+        used in future sessions.  The differences that Web Storage API has from cookies are: Information 
+        stored is NOT shared with the server on every request, Information is available in multiple 
+        windows, but only if the domain is the same, Storage capacity is larger than cookies, Any 
+        data stored doesn't automatically expire like cookies.  To save a value locally, use 
+        localStorage.setItem('name', 'Walter White'); rather than using the setItem() and getItem()
+        methods, can use assignment and reference localStorage.name like it is a variable to change 
+        its value.  localStorage.name = 'Heisenberg';  Then to remove it, localeStorage.removeItem('name');
+        You can also use the delete localeStorage.name; operator.  To completely remove everything 
+        in local storage, use the clear() method.  The properties are: key - tells if the key of the 
+        item that changed, newValue - tells the new value to which it has been changed, oldValue - tells 
+        the previous value before it was changed, storageArea - tells if it stored in a local or 
+        session storage.  The Geolocation API is used to obtain the geographical position of the device.
+        It can find the exact location of the user and then using nearby places, measure the speed 
+        the user is moving.  Permission to use this has to be granted by the user first.  Use the 
+        method getCurrentPosition() that will return a postion object to the specified callback 
+        function, which could be called youAreHere().  The position function passes the coords
+        property with a latitude and longitude property to give the coordinates of the device.
+        <div>Web Workers - allow processes to be run in the background.  Any process that could 
+          take a long time are carried out in the background so a website will continue to function 
+          without the page becoming unresponsive.  To start, create a new work using the constructor 
+          function Worker(). (See in the examples file).  These are dedicated web workers.  They
+          are linked to the script that loaded the worker and can't be used by another script.  You can 
+          also create shared web workers that allow lots of different scripts on the same domain to 
+          access the worker.  The Service Worker API allows a worker script to run in the background 
+          and be able to intercept network requests.  Websocket is a new protocol that allows 
+          two-way communication with a server, known as push messaging.  The connection is kept open 
+          and responses are pushed to the client as soon as they are received.  The Notification API
+          allows you to show messages using the system's notifications.  Multimedia runs without Flash
+          using audio and video tags to insert audio and video clips into a web page.  You use the src 
+          attribute to point to the audio file.  The same is used for video.  Any content inside these 
+          tags will display only if the browser doesn't support them.  The controls attribute an be 
+          added and will display the browser's native controls like play, pause, volume, etc.</div>
+        <div>Drawing with Canvas - canvas element is a rectangular element on the web page.  It has 
+          a corrdinate system that starts (0,0) in the top-left corner and can be accessed by using its method.
+          const canvasElement = document.getElementById('canvas');  Fill and stroke colors are 
+          changed using CSS to the fillStyle and strokeStyle properties.  Set the lineWidth property, 
+          which defaults to 1px and remains the same until changed.  The fillRect() method can draw 
+          a filled-in rectangle.  The strokeRect() method produces a not filled in rectangle.  Straight
+          lines are drawn using moveTo() and lineTo() methods.  Nothing is drawn on the canvas until 
+          the stroke() method is called.</div>
+      </p>
+      <h3>Modern Frontend Development Workflow</h3>
+      <p>Tools to help - Package Mananger - track all the external dependencies.  The development 
+        tools and libraries we might be using.  It know which packages to download and tracks the 
+        version as well.  (npm).  Bundlers - handle the compiling, transpiling, concatinating, minifying,
+        and moving around of assets in the project.  (Parcel, Webpack).  Task Managers - track what
+        needs to be done and when.  Generally scripts are defined in the task manager for each phase
+        of development.  (npm, Grunt, Gulp).
+      </p>
+      <a href="examples.js">Examples for reference</a><br>
+      <a href="animation/index.html">Animation examples</a><br>
+      <a href="team-activity-w9/index-START.html">Team Assignment Wk9</a>
+      <h3>Questions</h3>
+      <p>Is geolocation used in the Pokemon Go game?  Is it also used for applications that search
+        for restaurants or shopping "near me"?  Otherwise, this week's concepts make sense to me,
+        I'm just not sure how I will use web workers or canvas drawing in the future.
+      </p>
+    </section>
+  </body>
+</html>

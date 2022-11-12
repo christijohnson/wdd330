@@ -32,10 +32,19 @@ const links = [
         label: "Week 8 notes",
         url: "week8/index.html"
     },
+    {
+        label: "Week 9 notes",
+        url: "week9/index.html"
+    },
+    {
+        label: "Week 10 notes",
+        url: "week10/index.html"
+    },
 ];
-
+    count = 0;
     function buildList(assignments) {
         assignments.forEach(assignment => {
+            count = count + 1;
             let week = document.createElement('li');
             //week.textContent = assignment.label;
 
@@ -44,8 +53,12 @@ const links = [
             link.textContent = assignment.label;
 
             week.appendChild(link);
-
-            document.querySelector('ol').appendChild(week);
+            
+            if (count <= 7){
+                document.getElementById('block1').appendChild(week);
+            } else {
+                document.getElementById('block2').appendChild(week);
+            }
         })
     }
 
