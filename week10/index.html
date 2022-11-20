@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 10 Notes and Exercises - WDD330</title>
+  </head>
+  <body>
+    <h1>Week 10</h1>
+    <section>
+    <h2>Notes - MDN</h2>
+      <h3>Validating Forms</h3>
+      <p>Validate data on the client-side to ensure that the required forms are completed and correct.  
+        It is an initial check and an important feature of good user experience.  Catching and fixing
+        data on the client side helps speed up the process by removing the delay it takes for the data 
+        to make a round-trip to the server and back for validation.  Server side checks should also 
+        be done because client-side validation is easy to bypass.  When completing an on-line form 
+        the feedback you get when you enter, or don't enter, the data is form validation.  Examples 
+        are required fields, phone number or date format, valid email, or password requirements.  When 
+        you enter data, the browser and/or web server checks to see that the data is in the correct 
+        format and within the constraints.  If the information is formatted correctly, the application 
+        allows the data to be submitted to the server and saved in a database.  If the information is 
+        incorrect, the user gets an error message and the user can try again.  The reasons for validating 
+        our forms are: to get the right data in the right format, to protect the users' data, to 
+        protect ourselves. 
+        <div>Types - JavaScript is completely customizable, but you have to create it all or use a library.  
+            Built-in form validation uses HTML validation features, this has better performance but it 
+            isn't customizable.  Validation attributes include: required (whether a form needs to be filled
+            in before the form can be submitted), minlength/maxlength (min and max length of textual data, or
+            string), min/max (min and max value of numerical input types), type (whether data needs to be a 
+            number, email, or other specific preset type), pattern (regular expression that defines a pattern 
+            that the data needs to follow).  Data entered in a field that follows the rules specified in 
+            the attributes is considered valid, otherwise is considered invalid.  When the element matches - 
+            you can apply a specific style using the :valid CSS pseudo-class and the form will be submitted 
+            unless there is something else stopping it.  When the element is invalid you can apply the CSS 
+            pseudo-class of :invalid to it and the browser will block the form and display an error message.</div>
+        <div>Required Attribute - to make an input mandatory, add required to the element.  When this attribute 
+            is set it matches the :required pseudo-class and the form won't submit and an error message is 
+            displayed.  The same happens when the input is empty, it is considered invalid.</div>
+        <div>Pattern - this validation feature expects a regular expression as a value.  A regular expression 
+            is a pattern that can be used to match character combinations in text strings.  Some examples 
+            are: a (matches one character that is not a), abc (matches a, followed by b, followed by c), ab?c 
+            (matches a, optionally followed by a single b, followed by c like ac or abc), ab*c (matches a, 
+            optionally followed by any number of b s, followed by c - like ac, abc, abbbbbc), a|b (matches one 
+            character that is a or b), abc|xyz (matches exactly abc or xyz - not abcxyz or a or y).</div>
+        <div>Constraining - Length of entries - you can constrain the character length in text field with input or 
+            textarea by using minlength and maxlength.  Better user experiences use just maxlength and a 
+            character count feedback.  Value of entries - number fields with input type="number", use min and max
+            attributes to provide a range of valid values.</div>
+        <div>Validation using JavaScript - Constraint Validation API - set of methods and properties 
+            available on DOM interfaces: HTMLButtonElement, HTMLFieldSetElement, HTMLInputElement, HTMLOutputElement,
+            HTMLSelectElement, HTMLTextAreaElement.  The constraint validation API properties: validationMessage (returns 
+            a localized message about the constraints that aren't satisfied - if valid will return an empty string).  
+            validity (returns ValidityState object that contains several properties describing the state of 
+            the element).  The more common ones: patternMismatch (returns true if doesn't match and false if matched), 
+            tooLong (returns true if value longer than max length, or false if shorter than or equal to the 
+            max length), tooShort (returns true if value is shorter than min length or false if greater than or 
+            equal to the min length), rangeOverflow (returns ture if value is greater than the max or false if 
+            less than or equal to max value), rangeUnderflow (returns true if value is less than the min or false if it 
+            is greater than or equal to min value), typeMismatch (returns true if value not in the required syntax - like 
+            email or url - or false if syntax is correct), valid (returns true if element meets all validation 
+            constraints, or false if it fails any constraint), valueMissing (returns ture if element has a required 
+            attribute but no value, or false otherwise), willValidate (returns true if element will be validated when 
+            the form is submitted, or false otherwise).  The Constraint Validation API makes these methods 
+            availabe in the form element: checkValidity() - returns true if element's value has no validity problems, false
+            otherwise.  reportValidity() - reports invalid field(s) using events.  This is useful in 
+            combination with preventDefault() in a onSubmit event handler.  setCustomValidity(message) - adds 
+            a custom error message to the element.  (in example) store a reference to the email input and add an 
+            event listener so that it runs the contained code each time the value inside the input is changed.  We 
+            check to see if the input property returns true (the contained value doesn't match the pattern for a well-formed 
+            email address).  If so the setCustomValidity method is called with a custom message which is 
+            displayed.  It renders the input invalid, so the submission fails and the error message is displayed.</div>
+        <div>If you don't want to use the Constraint Validation API, you can still use JavaScript, but you will 
+            have to write your own.  Ask yourself these questions: What kind of validation should I perform? (How to
+            validate data - string operations, type conversion, regular expression, etc.).  What should I do if the 
+            form doesn't validate? (Does the form send data anyway?  Should I highlight the fields in error?  Should I 
+            display an error message?).  How can I help the user to correct invalid data? (Provide as much helpful 
+            information as possible, offer up-front suggestions, and clear error messages).</div>
+      </p>
+      <h3>Using Fetch</h3>
+      <p>The Fetch API provides JavaScript an interface for accessing and manipulating parts of the protocol
+        like requests and responses.  It also provides a global fetch() method that provides an easy, logical 
+        way to fetch resources asynchronously across the network.  Fetch specifications differ by: Promise returned
+        from fetch() won't reject on HTTP error status.  When the server responses with headers, the Promise will 
+        resolve normally, unless fetch() is called with credentails option set to include, fetch() - it won't send 
+        cookies in cross-origin requests, won't set any cookies sent back in cross-origin responses.  (in example) fetching
+        a JSON file across the network and printing to the console.  Simplest use of fetch() takes one 
+        argument - the path of the resource to fetch - doesn't directly return the JSON response, but instead 
+        a promise that resolves with a response object.  That object doesn't directly contain the JSON 
+        response body, but a representation of the entire HTTP response.  To extract the JSON body from the 
+        response object, we use the json() method - which returns with a second promise that resolves 
+        with the parsing of the response body text.  The fetch() method can accept a second parameter, an init 
+        object that allows you to control different settings.
+        <div>Headers - this interface allows you to create your own headers object using the Headers() 
+            constructor.  The headers object is a simple multi-map of names to values.  Headers can be sent 
+            in requests and received in responses - have various limitations - header's objects have a 
+            guard property.  Possible guards are: none (default), request (guard for headers object), 
+            request-no-cors (guard for headers object obtained from request created with request.mode), response (guard 
+            for a headers object obtained from a response), immutable (guard that renders a headers object 
+            read-only)</div>
+      </p>
+      <a href="validation-examples.html">Form validation examples</a><br>
+      <a href="fetch-examples.js">Fetch examples</a><br>
+      <a href="team-activity-w10/quakewatch.html">Team Assignment Wk10</a>
+      <h3>Questions</h3>
+      <p>No questions this week.  I'm not super comfortable with the Fetch API and json() methods.  I know that 
+        the more I use it, the more comfortable I will become.  In the section about Headers and Guards,
+        I not sure that I know how to use the guard properties to my benefit.
+      </p>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,224 @@
+<!-- required validation -->
+<form>
+    <label for="choose">Would you prefer a banana or cherry? (required)</label>
+    <input id="choose" name="i-like" required>
+    <button>Submit</button>
+</form>
+
+<!-- pattern validation-->
+<form>
+    <label for="choose">Would you prefer a banana or a cherry?</label>
+    <input id="choose" name="i-like" required pattern="[Bb]anana | [Cc]herry">
+    <button>Submit</button>
+</form>
+
+<!-- constraint validation -->
+<form>
+    <div>
+    <label for="choose">Would you prefer a banana or cherry? (required)</label>
+    <input 
+        type="text"
+        id="choose" 
+        name="i-like" 
+        required
+        minlength="6"
+        maxlength="6"></div>
+    <div>
+        <label for="number">How many would you like?</label>
+        <input type="number" id="number" name="amount" value="1" min="1" max="10">
+    </div>
+    <div>
+    <button>Submit</button></div>
+</form>
+
+<!-- HTML built in feature validations -->
+<form>
+    <p>
+      <fieldset>
+        <legend>Do you have a driver's license?<span aria-label="required">*</span></legend>
+        <!-- While only one radio button in a same-named group can be selected at a time,
+             and therefore only one radio button in a same-named group having the "required"
+             attribute suffices in making a selection a requirement -->
+        <input type="radio" required name="driver" id="r1" value="yes"><label for="r1">Yes</label>
+        <input type="radio" required name="driver" id="r2" value="no"><label for="r2">No</label>
+      </fieldset>
+    </p>
+    <p>
+      <label for="n1">How old are you?</label>
+      <!-- The pattern attribute can act as a fallback for browsers which
+           don't implement the number input type but support the pattern attribute.
+           Please note that browsers that support the pattern attribute will make it
+           fail silently when used with a number field.
+           Its usage here acts only as a fallback -->
+      <input type="number" min="12" max="120" step="1" id="n1" name="age"
+             pattern="\d+">
+    </p>
+    <p>
+      <label for="t1">What's your favorite fruit?<span aria-label="required">*</span></label>
+      <input type="text" id="t1" name="fruit" list="l1" required
+             pattern="[Bb]anana|[Cc]herry|[Aa]pple|[Ss]trawberry|[Ll]emon|[Oo]range">
+      <datalist id="l1">
+        <option>Banana</option>
+        <option>Cherry</option>
+        <option>Apple</option>
+        <option>Strawberry</option>
+        <option>Lemon</option>
+        <option>Orange</option>
+      </datalist>
+    </p>
+    <p>
+      <label for="t2">What's your e-mail address?</label>
+      <input type="email" id="t2" name="email">
+    </p>
+    <p>
+      <label for="t3">Leave a short message</label>
+      <textarea id="t3" name="msg" maxlength="140" rows="5"></textarea>
+    </p>
+    <p>
+      <button>Submit</button>
+    </p>
+  </form>
+
+  <!-- constraint validation API -->
+  <form>
+    <label for="mail">
+        I would like you to provide me with an email address:
+    </label>
+    <input type="email" id="mail" name="mail" />
+    <button>Submit</button>
+  </form>
+
+  <script>
+    const email = document.getElementById("mail");
+    email.addEventListener("input", (event) => {
+        if (email.validity.typeMismatch) {
+            email.setCustomValidity("I am expecting an email address!");
+            email.reportValidity();
+        } else {
+            email.setCustomValidity("");
+        }
+    });
+  </script>
+
+  <!-- complex custom validation -->
+  <form novalidate>
+    <p>
+      <label for="mail">
+        <span>Please enter an email address:</span>
+        <input type="email" id="mail" name="mail" required minlength="8" />
+        <span class="error" aria-live="polite"></span>
+      </label>
+    </p>
+    <button>Submit</button>
+  </form>
+
+  <script>
+// There are many ways to pick a DOM node; here we get the form itself and the email
+// input box, as well as the span element into which we will place the error message.
+const form = document.querySelector("form");
+const email1 = document.getElementById("mail");
+const emailError = document.querySelector("#mail + span.error");
+
+email.addEventListener("input", (event) => {
+  // Each time the user types something, we check if the
+  // form fields are valid.
+
+  if (email.validity.valid) {
+    // In case there is an error message visible, if the field
+    // is valid, we remove the error message.
+    emailError.textContent = ""; // Reset the content of the message
+    emailError.className = "error"; // Reset the visual state of the message
+  } else {
+    // If there is still an error, show the correct error
+    showError();
+  }
+});
+
+form.addEventListener("submit", (event) => {
+  // if the email field is valid, we let the form submit
+  if (!email.validity.valid) {
+    // If it isn't, we display an appropriate error message
+    showError();
+    // Then we prevent the form from being sent by canceling the event
+    event.preventDefault();
+  }
+});
+
+function showError() {
+  if (email.validity.valueMissing) {
+    // If the field is empty,
+    // display the following error message.
+    emailError.textContent = "You need to enter an e-mail address.";
+  } else if (email.validity.typeMismatch) {
+    // If the field doesn't contain an email address,
+    // display the following error message.
+    emailError.textContent = "Entered value needs to be an e-mail address.";
+  } else if (email.validity.tooShort) {
+    // If the data is too short,
+    // display the following error message.
+    emailError.textContent = `Email should be at least ${email.minLength} characters; you entered ${email.value.length}.`;
+  }
+
+  // Set the styling appropriately
+  emailError.className = "error active";
+}
+</script>
+
+<form>
+    <p>
+      <label for="mail">
+        <span>Please enter an email address:</span>
+        <input type="text" id="mail" name="mail" />
+        <span class="error" aria-live="polite"></span>
+      </label>
+    </p>
+    <button>Submit</button>
+  </form>
+
+  <script>
+const form1 = document.querySelector("form");
+const email2 = document.getElementById("mail");
+const error = email.nextElementSibling;
+
+// As per the HTML Specification
+const emailRegExp =
+  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+// Now we can rebuild our validation constraint
+// Because we do not rely on CSS pseudo-class, we have to
+// explicitly set the valid/invalid class on our email field
+window.addEventListener("load", () => {
+  // Here, we test if the field is empty (remember, the field is not required)
+  // If it is not, we check if its content is a well-formed e-mail address.
+  const isValid = email.value.length === 0 || emailRegExp.test(email.value);
+  email.className = isValid ? "valid" : "invalid";
+});
+
+// This defines what happens when the user types in the field
+email.addEventListener("input", () => {
+  const isValid = email.value.length === 0 || emailRegExp.test(email.value);
+  if (isValid) {
+    email.className = "valid";
+    error.textContent = "";
+    error.className = "error";
+  } else {
+    email.className = "invalid";
+  }
+});
+
+// This defines what happens when the user tries to submit the data
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const isValid = email.value.length === 0 || emailRegExp.test(email.value);
+  if (!isValid) {
+    email.className = "invalid";
+    error.textContent = "I expect an e-mail, darling!";
+    error.className = "error active";
+  } else {
+    email.className = "valid";
+    error.textContent = "";
+    error.className = "error";
+  }
+});
+  </script>
