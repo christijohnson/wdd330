@@ -58,7 +58,6 @@ export default class QuakesController {
     //this.parentElement.addEventListener('touchend', e => {
     this.parentElement.addEventListener('click', e => {
       this.getQuakeDetails(e.target.dataset.id);
-      //console.log(e.target.dataset.id);
     });
   }
   async getQuakeDetails(quakeId) {
