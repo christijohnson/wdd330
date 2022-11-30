@@ -46,7 +46,7 @@ const links = [
     },
     {
         label: "Block 2 Project",
-        url: "week11/team-activity-w11/week11.html"
+        url: "final/index.html"
     }
 ];
     count = 0;
