@@ -47,6 +47,7 @@ import * as zip from './zip.js';
     const zipurl = 'https://api.openweathermap.org/geo/1.0/zip?zip=' + zipcode + ',us&appid=7bcb523faeae2a7693622e17ed4cfcf2';
     zip.apiZipFetch(zipurl);
   }
+console.log(zipcode);
 
 const t = document.getElementById("toggle-weather");
 const m = document.getElementById("toggle-mode");
