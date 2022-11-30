@@ -41,9 +41,13 @@ const links = [
         url: "week10/index.html"
     },
     {
-        label: "Week 11 notes",
-        url: "week11/index.html"
+        label: "Week 11 assignment",
+        url: "week11/team-activity-w11/week11.html"
     },
+    {
+        label: "Block 2 Project",
+        url: "week11/team-activity-w11/week11.html"
+    }
 ];
     count = 0;
     function buildList(assignments) {

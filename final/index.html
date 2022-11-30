@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@1,300&family=Mallanna&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Weather Conditions</title>
+</head>
+<body>
+  <h1>Weather Conditions</h1>
+  <div class="container" id="filters">
+    <button class="filterButton" id="toggle-weather"><span>Current Conditions</span><span>Forecast 6 days</span></button>
+    <button class="filterButton" id="toggle-mode"><span>Light Mode</span><span>Dark Mode</span></button>
+  </div>
+  <section class="main">
+  <div class="fav-list">
+    <form  action="#">
+      <input type="text" name="item" id="item" placeholder="Add New Zip Code">
+    </form>  
+    <ul id="list"></ul>
+  </div>
+  <div class="weather">
+    <h2 id="weather-header">Weather Conditions for <span id="selectedLocation"></span></h2>
+    <div id="current-weather">
+      <figure id="display-weather">
+        <img id="weather-icon" src="images/placeholder_400x300.webp" alt="placeholder">
+        <figcaption>
+        </figcaption>
+        <div class="weather-stats">
+          <p id="temperature"><span id="current-temp"></span> &deg;F</p>
+          <p>Humidity:  <span id="current-hum">N/A</span>%</p>
+          <p>Feels Like:  <span id="current-feels-like">N/A</span> &deg;F</p>
+          <p>Wind Speed:  <span id="current-wind-speed">N/A</span> mph</p>
+          <p>Wind Direction:  <span id="current-wind-dir">N/A</span></p>
+        </div>
+      </figure>
+    </div>
+    <div id="future-weather" class="hidden">
+      <div id="forecast">
+        <div>
+          <figure>
+            <p id="day1">Tomorrow</p>
+            <img id="weather-icon1" src="images/placeholder_400x300.webp" alt="placeholder">
+            <figcaption id="figcaption1"></figcaption>
+            <p>Low <span id="day1-temp-min"></span> &deg;F</p>
+            <p>High <span id="day1-temp-max"></span> &deg;F</p>
+          </figure>
+        </div>
+        <div>
+          <figure>
+            <p id="day2">2<sup>nd</sup> day</p>
+            <img id="weather-icon2" src="images/placeholder_400x300.webp" alt="placeholder">
+            <figcaption id="figcaption2"></figcaption>
+            <p>Low <span id="day2-temp-min"></span> &deg;F</p>
+            <p>High <span id="day2-temp-max"></span> &deg;F</p>
+          </figure>
+        </div>
+        <div>
+          <figure>
+            <p id="day3">3<sup>rd</sup> day</p>
+            <img id="weather-icon3" src="images/placeholder_400x300.webp" alt="placeholder">
+            <figcaption id="figcaption3"></figcaption>
+            <p>Low <span id="day3-temp-min"></span> &deg;F</p>
+            <p>High <span id="day3-temp-max"></span> &deg;F</p>
+          </figure>
+        </div>
+        <div>
+          <figure>
+            <p id="day4">4<sup>th</sup> day</p>
+            <img id="weather-icon4" src="images/placeholder_400x300.webp" alt="placeholder">
+            <figcaption id="figcaption4"></figcaption>
+            <p>Low <span id="day4-temp-min"></span> &deg;F</p>
+            <p>High <span id="day4-temp-max"></span> &deg;F</p>
+          </figure>
+        </div>
+        <div>
+          <figure>
+            <p id="day5">5<sup>th</sup> day</p>
+            <img id="weather-icon5" src="images/placeholder_400x300.webp" alt="placeholder">
+            <figcaption id="figcaption5"></figcaption>
+            <p>Low <span id="day5-temp-min"></span> &deg;F</p>
+            <p>High <span id="day5-temp-max"></span> &deg;F</p>
+          </figure>
+        </div>
+        <div>
+          <figure>
+            <p id="day6">6<sup>th</sup> day</p>
+            <img id="weather-icon6" src="images/placeholder_400x300.webp" alt="placeholder">
+            <figcaption id="figcaption6"></figcaption>
+            <p>Low <span id="day6-temp-min"></span> &deg;F</p>
+            <p>High <span id="day6-temp-max"></span> &deg;F</p>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <footer>
+  </footer>
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
