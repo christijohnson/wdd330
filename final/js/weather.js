@@ -1,11 +1,5 @@
 import * as util from './utility.js';
 
-const weekDay1 = document.querySelector('#day1');
-const weekDay2 = document.querySelector('#day2');
-const weekDay3 = document.querySelector('#day3');
-const weekDay4 = document.querySelector('#day4');
-const weekDay5 = document.querySelector('#day5');
-const weekDay6 = document.querySelector('#day6');
 const currentTemp = document.querySelector('#current-temp');
 const currenthum = document.querySelector('#current-hum');
 const weatherIcon = document.querySelector('#weather-icon');
@@ -13,31 +7,8 @@ const captionDesc = document.querySelector('figcaption');
 const currentFeelsLike = document.querySelector('#current-feels-like');
 const currentWindSpeed = document.querySelector('#current-wind-speed');
 const currentWindDir = document.querySelector('#current-wind-dir');
-const day1TempMin = document.querySelector('#day1-temp-min');
-const day1TempMax = document.querySelector('#day1-temp-max');
-const weatherIcon1 = document.querySelector('#weather-icon1');
-const captionDesc1 = document.querySelector('#figcaption1');
-const day2TempMin = document.querySelector('#day2-temp-min');
-const day2TempMax = document.querySelector('#day2-temp-max');
-const weatherIcon2 = document.querySelector('#weather-icon2');
-const captionDesc2 = document.querySelector('#figcaption2');
-const day3TempMin = document.querySelector('#day3-temp-min');
-const day3TempMax = document.querySelector('#day3-temp-max');
-const weatherIcon3 = document.querySelector('#weather-icon3');
-const captionDesc3 = document.querySelector('#figcaption3');
-const day4TempMin = document.querySelector('#day4-temp-min');
-const day4TempMax = document.querySelector('#day4-temp-max');
-const weatherIcon4 = document.querySelector('#weather-icon4');
-const captionDesc4 = document.querySelector('#figcaption4');
-const day5TempMin = document.querySelector('#day5-temp-min');
-const day5TempMax = document.querySelector('#day5-temp-max');
-const weatherIcon5 = document.querySelector('#weather-icon5');
-const captionDesc5 = document.querySelector('#figcaption5');
-const day6TempMin = document.querySelector('#day6-temp-min');
-const day6TempMax = document.querySelector('#day6-temp-max');
-const weatherIcon6 = document.querySelector('#weather-icon6');
-const captionDesc6 = document.querySelector('#figcaption6');
-const weatheralert = document.querySelector('#alert-weather');
+const weatherCards = document.querySelector(".cards");
+const hourweatherCards = document.querySelector(".hourcards");
 
 export async function apiFetch(apiURL) {
 		try {
@@ -45,6 +16,7 @@ export async function apiFetch(apiURL) {
 			if (response.ok) {
 				const data = await response.json();
 				displayResults(data);
+				console.log(data);
 			} else {
 					throw Error(await response.text());
 			}
@@ -54,11 +26,13 @@ export async function apiFetch(apiURL) {
 	}
 
 	function  displayResults(weatherData) {
+		weatherCards.innerHTML = '';
 		const temp = weatherData.current.temp;
 		const hum = weatherData.current.humidity;
 		currentTemp.innerHTML = `<strong>${temp.toFixed(0)}</strong>`;
 		currenthum.innerHTML = `<strong>${hum}</strong>`;
 		const iconsrc = `images/weather/${weatherData.current.weather[0].icon}.svg`;
+		const iconsrcalt = `'http://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@2x.png'`;
 		const desc = weatherData.current.weather[0].description;
 		const feels_like = weatherData.current.feels_like;
 		const wind_speed = weatherData.current.wind_speed;
@@ -69,84 +43,75 @@ export async function apiFetch(apiURL) {
 		currentWindDir.innerHTML = windCardinal + ' (' + wind_direction + '\xB0)';
 		
 		weatherIcon.setAttribute('src', iconsrc);
+		weatherIcon.setAttribute("onerror", 'this.src=' + iconsrcalt);
 		weatherIcon.setAttribute('alt', desc);
 		captionDesc.textContent = titleCase(desc);
-		
-		const dayofweek1 = util.dayOfWeek(1);
-		const dayofweek2 = util.dayOfWeek(2);
-		const dayofweek3 = util.dayOfWeek(3);
-		const dayofweek4 = util.dayOfWeek(4);
-		const dayofweek5 = util.dayOfWeek(5);
-		const dayofweek6 = util.dayOfWeek(6);
 
-		weekDay1.innerHTML = dayofweek1;
-		weekDay2.innerHTML = dayofweek2;
-		weekDay3.innerHTML = dayofweek3;
-		weekDay4.innerHTML = dayofweek4;
-		weekDay5.innerHTML = dayofweek5;
-		weekDay6.innerHTML = dayofweek6;
-		
-		const tempday1min = weatherData.daily[1].temp.min;
-		const tempday1max = weatherData.daily[1].temp.max;
-		const tempday2min = weatherData.daily[2].temp.min;
-		const tempday2max = weatherData.daily[2].temp.max;
-		const tempday3min = weatherData.daily[3].temp.min;
-		const tempday3max = weatherData.daily[3].temp.max;
-		const tempday4min = weatherData.daily[4].temp.min;
-		const tempday4max = weatherData.daily[4].temp.max;
-		const tempday5min = weatherData.daily[5].temp.min;
-		const tempday5max = weatherData.daily[5].temp.max;
-		const tempday6min = weatherData.daily[6].temp.min;
-		const tempday6max = weatherData.daily[6].temp.max;
-		const desc1 = weatherData.daily[1].weather[0].description;
-		const desc2 = weatherData.daily[2].weather[0].description;
-		const desc3 = weatherData.daily[3].weather[0].description;
-		const desc4 = weatherData.daily[4].weather[0].description;
-		const desc5 = weatherData.daily[5].weather[0].description;
-		const desc6 = weatherData.daily[6].weather[0].description;
-		
-		day1TempMin.innerHTML = `<strong>${tempday1min.toFixed(0)}</strong>`;
-		day1TempMax.innerHTML = `<strong>${tempday1max.toFixed(0)}</strong>`;
-		day2TempMin.innerHTML = `<strong>${tempday2min.toFixed(0)}</strong>`;
-		day2TempMax.innerHTML = `<strong>${tempday2max.toFixed(0)}</strong>`;
-		day3TempMin.innerHTML = `<strong>${tempday3min.toFixed(0)}</strong>`;
-		day3TempMax.innerHTML = `<strong>${tempday3max.toFixed(0)}</strong>`;
-		day4TempMin.innerHTML = `<strong>${tempday4min.toFixed(0)}</strong>`;
-		day4TempMax.innerHTML = `<strong>${tempday4max.toFixed(0)}</strong>`;
-		day5TempMin.innerHTML = `<strong>${tempday5min.toFixed(0)}</strong>`;
-		day5TempMax.innerHTML = `<strong>${tempday5max.toFixed(0)}</strong>`;
-		day6TempMin.innerHTML = `<strong>${tempday6min.toFixed(0)}</strong>`;
-		day6TempMax.innerHTML = `<strong>${tempday6max.toFixed(0)}</strong>`;
-		
-		const iconsrc1 = `images/weather/${weatherData.daily[1].weather[0].icon}.svg`;
-		weatherIcon1.setAttribute('src', iconsrc1);
-		weatherIcon1.setAttribute('alt', desc1);
-		captionDesc1.textContent = titleCase(desc1);
+		for (let i = 1; i < 7; i++) {
+			let card = document.createElement("figure");
+			let subcard = document.createElement("div");
+			let dow = document.createElement("p");
+			let picture = document.createElement("img");
+			let forecastdescription = document.createElement("figcaption");
+			let hiTemp = document.createElement("p");
+			let loTemp = document.createElement("p");
+	
+			dow.innerHTML = `<strong>${util.dayOfWeek(i)}</strong>`;
+			let weatherDescription = `${weatherData.daily[i].weather[0].description}`;
+			forecastdescription.textContent = titleCase(weatherDescription);
+			hiTemp.innerHTML = `High <strong>${weatherData.daily[i].temp.max.toFixed(0)}</strong> \xB0F`;
+			loTemp.innerHTML = `Low <strong>${weatherData.daily[i].temp.min.toFixed(0)}</strong> \xB0F`;
+			
+			const iconsrc1 = `images/weather/${weatherData.daily[i].weather[0].icon}.svg`
+			const iconsrc1alt = `'http://openweathermap.org/img/wn/${weatherData.daily[i].weather[0].icon}@2x.png'`;
+				
+			picture.setAttribute("src", iconsrc1);
+			picture.setAttribute("onerror", 'this.src=' + iconsrc1alt);
+			picture.setAttribute("alt", `Image of ${weatherData.daily[i].weather[0].description}`);
+			picture.setAttribute("loading", "lazy");
+			card.appendChild(dow);
+			card.appendChild(picture);
+			card.appendChild(forecastdescription);
+			card.appendChild(hiTemp);
+			card.appendChild(loTemp);
+			subcard.appendChild(card);
+			weatherCards.appendChild(subcard);
+		}
 
-		const iconsrc2 = `images/weather/${weatherData.daily[2].weather[0].icon}.svg`;
-		weatherIcon2.setAttribute('src', iconsrc2);
-		weatherIcon2.setAttribute('alt', desc2);
-		captionDesc2.textContent = titleCase(desc2);
-
-		const iconsrc3 = `images/weather/${weatherData.daily[3].weather[0].icon}.svg`;
-		weatherIcon3.setAttribute('src', iconsrc3);
-		weatherIcon3.setAttribute('alt', desc3);
-		captionDesc3.textContent = titleCase(desc3);
-
-		const iconsrc4 = `images/weather/${weatherData.daily[4].weather[0].icon}.svg`;
-		weatherIcon4.setAttribute('src', iconsrc4);
-		weatherIcon4.setAttribute('alt', desc4);
-		captionDesc4.textContent = titleCase(desc4);
-
-		const iconsrc5 = `images/weather/${weatherData.daily[5].weather[0].icon}.svg`;
-		weatherIcon5.setAttribute('src', iconsrc5);
-		weatherIcon5.setAttribute('alt', desc5);
-		captionDesc5.textContent = titleCase(desc5);
-
-		const iconsrc6 = `images/weather/${weatherData.daily[3].weather[0].icon}.svg`;
-		weatherIcon6.setAttribute('src', iconsrc6);
-		weatherIcon6.setAttribute('alt', desc6);
-		captionDesc6.textContent = titleCase(desc6);
+			//hourly forecast
+		for (let i = 0; i < 24; i++) {
+			let hourcard = document.createElement("figure");
+			let hoursubcard = document.createElement("div");
+			let hour = document.createElement("p");
+			let hourpicture = document.createElement("img");
+			let hourforecastdescription = document.createElement("figcaption");
+			let hourhiTemp = document.createElement("p");
+			//let hourloTemp = document.createElement("p");
+	
+			let hour3 = weatherData.hourly[i].dt;
+			let hour2 = new Date(hour3);
+			hour.innerHTML = hour2;
+			//hour.innerHTML = `<strong>${weatherData.hourly[i].dt}</strong>`;
+			let hourweatherDescription = `${weatherData.hourly[i].weather[0].description}`;
+			hourforecastdescription.textContent = titleCase(hourweatherDescription);
+			hourhiTemp.innerHTML = `Temp <strong>${weatherData.hourly[i].temp.toFixed(0)}</strong> \xB0F`;
+			//hourloTemp.innerHTML = `Low <strong>${weatherData.hourly[i].temp.min.toFixed(0)}</strong> \xB0F`;
+			
+			const houriconsrc1 = `images/weather/${weatherData.hourly[i].weather[0].icon}.svg`
+			const houriconsrc1alt = `'http://openweathermap.org/img/wn/${weatherData.hourly[i].weather[0].icon}@2x.png'`;
+				
+			hourpicture.setAttribute("src", houriconsrc1);
+			hourpicture.setAttribute("onerror", 'this.src=' + houriconsrc1alt);
+			hourpicture.setAttribute("alt", `Image of ${weatherData.hourly[i].weather[0].description}`);
+			hourpicture.setAttribute("loading", "lazy");
+			hourcard.appendChild(hour);
+			hourcard.appendChild(hourpicture);
+			hourcard.appendChild(hourforecastdescription);
+			hourcard.appendChild(hourhiTemp);
+			//hourcard.appendChild(hourloTemp);
+			hoursubcard.appendChild(hourcard);
+			hourweatherCards.appendChild(hoursubcard);
+		}
 	}
 
 // Title Case Conversion
@@ -157,19 +122,11 @@ export async function apiFetch(apiURL) {
 		}).join(' ');
 	}
 
-	/** 
- * Given "0-360" returns the nearest cardinal direction
- */
 function getCardinal(angle) {
-	/** 
-	 * Customize by changing the number of directions you have
-	 */
+	/* Given "0-360" returns the nearest cardinal direction.  Customize by changing the number of directions you have */
 	const degreePerDirection = 360 / 16;
   
-	/** 
-	 * Offset the angle by half of the degrees per direction
-	 * Example: in 4 direction system North (320-45) becomes (0-90)
-	 */
+	/* Offset the angle by half of the degrees per direction Example: in 4 direction system North (320-45) becomes (0-90) */
 	const offsetAngle = angle + degreePerDirection / 2;
   
 	return (offsetAngle >= 0 * degreePerDirection && offsetAngle < 1 * degreePerDirection) ? "N"
@@ -189,3 +146,14 @@ function getCardinal(angle) {
 		: (offsetAngle >= 14 * degreePerDirection && offsetAngle < 15 * degreePerDirection) ? "NW"
 			: "NNW";
   }
+
+  /*function doesFileExist(urlToFile) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('HEAD', urlToFile, false);
+    xhr.send();
+    if (xhr.status == "404") {
+        return false;
+    } else {
+        return true;
+    }
+}*/

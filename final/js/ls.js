@@ -1,9 +1,9 @@
 export function store() {
-    window.localStorage.myitems = list.innerHTML;
+    window.localStorage.weather = list.innerHTML;
 }
   
 export function getValues() {
-    var storedValues = window.localStorage.myitems;
+    var storedValues = window.localStorage.weather;
     if(!storedValues) {
                        
     } else {
