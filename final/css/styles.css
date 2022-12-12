@@ -188,7 +188,7 @@ figure {
 
 .dark-mode h1 {
   background-color: rgb(87, 18, 165);
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 .dark-mode figure {
@@ -197,6 +197,7 @@ figure {
 
 .dark-mode button {
   background-color: #223db4;
+  color: rgb(255, 255, 255);
 }
 
 .dark-mode input {
