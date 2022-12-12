@@ -32,7 +32,7 @@ export async function apiFetch(apiURL) {
 		currentTemp.innerHTML = `<strong>${temp.toFixed(0)}</strong>`;
 		currenthum.innerHTML = `<strong>${hum}</strong>`;
 		const iconsrc = `images/weather/${weatherData.current.weather[0].icon}.svg`;
-		const iconsrcalt = `'http://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@2x.png'`;
+		const iconsrcalt = `'https://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@2x.png'`;
 		const desc = weatherData.current.weather[0].description;
 		const feels_like = weatherData.current.feels_like;
 		const wind_speed = weatherData.current.wind_speed;
@@ -63,7 +63,7 @@ export async function apiFetch(apiURL) {
 			loTemp.innerHTML = `Low <strong>${weatherData.daily[i].temp.min.toFixed(0)}</strong> \xB0F`;
 			
 			const iconsrc1 = `images/weather/${weatherData.daily[i].weather[0].icon}.svg`
-			const iconsrc1alt = `'http://openweathermap.org/img/wn/${weatherData.daily[i].weather[0].icon}@2x.png'`;
+			const iconsrc1alt = `'https://openweathermap.org/img/wn/${weatherData.daily[i].weather[0].icon}@2x.png'`;
 				
 			picture.setAttribute("src", iconsrc1);
 			picture.setAttribute("onerror", 'this.src=' + iconsrc1alt);
