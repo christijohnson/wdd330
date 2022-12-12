@@ -15,7 +15,11 @@ export async function apiFetch(apiURL) {
 			if (response.ok) {
 				const data = await response.json();
 				displayResults(data);
+<<<<<<< HEAD
 				//console.log(data);
+=======
+//				console.log(data);
+>>>>>>> 9644afd661a7b3702e514ce150bf0a046d33ba3c
 			} else {
 					throw Error(await response.text());
 			}
