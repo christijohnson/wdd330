@@ -15,11 +15,6 @@ export async function apiFetch(apiURL) {
 			if (response.ok) {
 				const data = await response.json();
 				displayResults(data);
-<<<<<<< HEAD
-				//console.log(data);
-=======
-//				console.log(data);
->>>>>>> 9644afd661a7b3702e514ce150bf0a046d33ba3c
 			} else {
 					throw Error(await response.text());
 			}
@@ -114,14 +109,3 @@ function getCardinal(angle) {
 		: (offsetAngle >= 14 * degreePerDirection && offsetAngle < 15 * degreePerDirection) ? "NW"
 			: "NNW";
   }
-
-  /*function doesFileExist(urlToFile) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('HEAD', urlToFile, false);
-    xhr.send();
-    if (xhr.status == "404") {
-        return false;
-    } else {
-        return true;
-    }
-}*/
