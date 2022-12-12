@@ -8,7 +8,6 @@ const currentFeelsLike = document.querySelector('#current-feels-like');
 const currentWindSpeed = document.querySelector('#current-wind-speed');
 const currentWindDir = document.querySelector('#current-wind-dir');
 const weatherCards = document.querySelector(".cards");
-const hourweatherCards = document.querySelector(".hourcards");
 
 export async function apiFetch(apiURL) {
 		try {
@@ -32,7 +31,7 @@ export async function apiFetch(apiURL) {
 		currentTemp.innerHTML = `<strong>${temp.toFixed(0)}</strong>`;
 		currenthum.innerHTML = `<strong>${hum}</strong>`;
 		const iconsrc = `images/weather/${weatherData.current.weather[0].icon}.svg`;
-		const iconsrcalt = `'http://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@2x.png'`;
+		const iconsrcalt = `'https://openweathermap.org/img/wn/${weatherData.current.weather[0].icon}@2x.png'`;
 		const desc = weatherData.current.weather[0].description;
 		const feels_like = weatherData.current.feels_like;
 		const wind_speed = weatherData.current.wind_speed;
@@ -63,7 +62,7 @@ export async function apiFetch(apiURL) {
 			loTemp.innerHTML = `Low <strong>${weatherData.daily[i].temp.min.toFixed(0)}</strong> \xB0F`;
 			
 			const iconsrc1 = `images/weather/${weatherData.daily[i].weather[0].icon}.svg`
-			const iconsrc1alt = `'http://openweathermap.org/img/wn/${weatherData.daily[i].weather[0].icon}@2x.png'`;
+			const iconsrc1alt = `'https://openweathermap.org/img/wn/${weatherData.daily[i].weather[0].icon}@2x.png'`;
 				
 			picture.setAttribute("src", iconsrc1);
 			picture.setAttribute("onerror", 'this.src=' + iconsrc1alt);
@@ -76,41 +75,6 @@ export async function apiFetch(apiURL) {
 			card.appendChild(loTemp);
 			subcard.appendChild(card);
 			weatherCards.appendChild(subcard);
-		}
-
-			//hourly forecast
-		for (let i = 0; i < 24; i++) {
-			let hourcard = document.createElement("figure");
-			let hoursubcard = document.createElement("div");
-			let hour = document.createElement("p");
-			let hourpicture = document.createElement("img");
-			let hourforecastdescription = document.createElement("figcaption");
-			let hourhiTemp = document.createElement("p");
-			//let hourloTemp = document.createElement("p");
-	
-			let hour3 = weatherData.hourly[i].dt;
-			let hour2 = new Date(hour3);
-			hour.innerHTML = hour2;
-			//hour.innerHTML = `<strong>${weatherData.hourly[i].dt}</strong>`;
-			let hourweatherDescription = `${weatherData.hourly[i].weather[0].description}`;
-			hourforecastdescription.textContent = titleCase(hourweatherDescription);
-			hourhiTemp.innerHTML = `Temp <strong>${weatherData.hourly[i].temp.toFixed(0)}</strong> \xB0F`;
-			//hourloTemp.innerHTML = `Low <strong>${weatherData.hourly[i].temp.min.toFixed(0)}</strong> \xB0F`;
-			
-			const houriconsrc1 = `images/weather/${weatherData.hourly[i].weather[0].icon}.svg`
-			const houriconsrc1alt = `'http://openweathermap.org/img/wn/${weatherData.hourly[i].weather[0].icon}@2x.png'`;
-				
-			hourpicture.setAttribute("src", houriconsrc1);
-			hourpicture.setAttribute("onerror", 'this.src=' + houriconsrc1alt);
-			hourpicture.setAttribute("alt", `Image of ${weatherData.hourly[i].weather[0].description}`);
-			hourpicture.setAttribute("loading", "lazy");
-			hourcard.appendChild(hour);
-			hourcard.appendChild(hourpicture);
-			hourcard.appendChild(hourforecastdescription);
-			hourcard.appendChild(hourhiTemp);
-			//hourcard.appendChild(hourloTemp);
-			hoursubcard.appendChild(hourcard);
-			hourweatherCards.appendChild(hoursubcard);
 		}
 	}
 

@@ -21,7 +21,7 @@ export async function apiZipFetch(apiURL) {
 function  displayResults(zipData) {
 	const lat = zipData.lat;
 	const lon = zipData.lon;
-	const location = 'http://api.openweathermap.org/geo/1.0/reverse?lat=' + lat + '&lon=' + lon + '&limit=5&appid=7bcb523faeae2a7693622e17ed4cfcf2'
+	const location = 'https://api.openweathermap.org/geo/1.0/reverse?lat=' + lat + '&lon=' + lon + '&limit=5&appid=7bcb523faeae2a7693622e17ed4cfcf2'
 	locationFetch(location);
 	const url = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lon + '&exclude=minutely&units=imperial&appid=7bcb523faeae2a7693622e17ed4cfcf2';
 	weather.apiFetch(url);
