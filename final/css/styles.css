@@ -208,8 +208,23 @@ figure {
   background-color: rgb(58, 56, 53);
 }
 
+@media only screen and (max-width:1500px){
+  body {
+    margin: 0 10% 0 10%;
+  }
+}
+
 @media only screen and (max-width:800px){
   body {
     margin: 0;
+  }
+
+  /* weather conditions */
+  .weather img {
+    height: 75px;
+  }
+
+  #forecast {
+    grid-template-columns: 1fr 1fr;
   }
 }
