@@ -66,6 +66,11 @@ footer {
   background-color: black;
 }
 
+.fav-list p{
+  color: rgb(145, 145, 145);
+  font-size: .75em;
+}
+
 /* favorite list */
 .container {
   margin-top: 40px;
