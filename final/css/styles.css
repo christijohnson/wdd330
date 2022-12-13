@@ -207,3 +207,9 @@ figure {
 .dark-mode .fav-list {
   background-color: rgb(58, 56, 53);
 }
+
+@media only screen and (max-width:800px){
+  body {
+    margin: 0;
+  }
+}
